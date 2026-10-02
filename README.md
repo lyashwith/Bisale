@@ -177,6 +177,6 @@ Developed by **Yashwith L.**
 
 ## ⭐ Support
 
-If you find registrarY useful or interesting, consider giving the repository a ⭐ on GitHub.
+If you find **Bisale** useful or interesting, consider giving the repository a ⭐ on GitHub.
 
 
