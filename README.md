@@ -165,5 +165,18 @@ The current interpreter is a basic implementation and has several limitations:
 Bisale is a personal programming-language project created to explore how programming languages and interpreters work.
 
 The current interpreter is implemented in Python.
+## 👤 Author
+
+Developed by **Yashwith L.**
+
+<a href="https://github.com/lyashwith">
+  <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50">
+</a>
+
+---
+
+## ⭐ Support
+
+If you find registrarY useful or interesting, consider giving the repository a ⭐ on GitHub.
 
 
