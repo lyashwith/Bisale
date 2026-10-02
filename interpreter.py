@@ -14,3 +14,7 @@ for line in lines:
         values = content.split(",")
         for value in values:
             value = value.strip()
+            if len(values) > 1:
+                print(variables[value], end=" ")
+            else:
+                print(variables[value])
