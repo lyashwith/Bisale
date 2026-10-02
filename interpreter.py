@@ -15,11 +15,12 @@ for line in lines:
         value=int(value)
         variables[variable]=value
     if line.endswith(";"):
-        content = line[8:-2]
-        values = content.split(",")
-        for value in values:
-            value = value.strip()
-            if len(values) > 1:
-                print(variables[value], end=" ")
-            else:
-                print(variables[value])
+        if line.startswith("thojpav("):
+            content = line[8:-2]
+            values = content.split(",")
+            for value in values:
+                value = value.strip()
+                if len(values) > 1:
+                    print(variables[value], end=" ")
+                else:
+                    print(variables[value])
