@@ -1,11 +1,6 @@
-while True:
-    try:
-        filename = input("Enter Bisale name to cook: ")
-        with open(f"{filename}.bisale", "r") as file:
-            code = file.read()
-            break
-    except FileNotFoundError as e:
-        print(f"{e}")
+filename = input("Enter Bisale file: ")
+with open(f"{filename}.bisale", "r") as file:
+    code = file.read()
 lines = code.splitlines()
 variables={}
 for line in lines:
@@ -14,8 +9,8 @@ for line in lines:
         variable,value=content.split("=")
         value=int(value)
         variables[variable]=value
-    if line.endswith(";"):
-        content = line[8:-2]
+    elif line.startswith("tojpav("):
+        content = line[7:-2]
         values = content.split(",")
         for value in values:
             value = value.strip()
