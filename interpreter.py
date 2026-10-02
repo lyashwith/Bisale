@@ -9,3 +9,8 @@ for line in lines:
         variable,value=content.split("=")
         value=int(value)
         variables[variable]=value
+    elif line.startswith("tojpav("):
+        content = line[7:-2]
+        values = content.split(",")
+        for value in values:
+            value = value.strip()
