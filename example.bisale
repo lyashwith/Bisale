@@ -1,0 +1,5 @@
+int(a=1)
+int(b=2)
+tojpav(a);
+tojpav(b);
+tojpav(a,b);
