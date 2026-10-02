@@ -167,7 +167,7 @@ Bisale is a personal programming-language project created to explore how program
 The current interpreter is implemented in Python.
 ## 👤 Author
 
-Developed by **Yashwith L.**
+Developed by **Yashwith L**
 
 <a href="https://github.com/lyashwith">
   <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50">
