@@ -28,7 +28,9 @@ def lexer(code):
             tokens.append(("EQUAL",character))
             code_word=""
         elif character == ",":
-            if code_word != "":
+            if code_word.isdigit():
+                tokens.append(("INTEGER", code_word))
+            elif code_word != "":
                 tokens.append(("IDENTIFIER", code_word))
             tokens.append(("COMMA", character))
             code_word = ""
@@ -50,44 +52,34 @@ def lexer(code):
 
 def parser(tokens):
     pos=0
+    variables={}
     while pos<len(tokens):
         if tokens[pos][0] == "INT":
             if tokens[pos+1][0]=="LEFT_PARENT":
                 if tokens[pos+2][0] == "IDENTIFIER":
                     pos2=pos+3
+                    if tokens[pos2][0] == "EQUAL":
+                        if tokens[pos2+1][0] == "INTEGER":
+                            variables[tokens[pos+2][1]] = int(tokens[pos2+1][1])
+                            pos2+=2
+                        else:
+                            variables[tokens[pos+2][1]] = 0
+                    else:
+                        variables[tokens[pos+2][1]] = 0
                     while tokens[pos2][0]=="COMMA":
                         if tokens[pos2+1][0]=="IDENTIFIER":
-                            print("hi")
-                            pos2+=2
+                                if tokens[pos2+2][0]=="EQUAL":
+                                    if tokens[pos2+3][0]=="INTEGER":
+                                        variables[tokens[pos2+1][1]]=int(tokens[pos2+3][1])
+                                        pos2+=4
+                                else:
+                                    variables[tokens[pos2+1][1]] = 0
+                                    pos2+=2
                         else:
                             break
                     if tokens[pos2][0] == "RIGHT_PARENT":
                         print("Valid declaration")
         pos+=1
-
+    return variables
 tokens=lexer(code)
-parser(tokens)
-
-"""for line in lines:
-    if line.startswith("int(") and line.endswith(")"):
-        content = line[4:-1]
-        if "=" in line:
-            variable,value=content.split("=")
-            value=int(value)
-            variables[variable]=value
-            variable=eval(variable,{},variables)
-        else:
-            variable=content
-            value=0
-            variables[variable]=value
-            variable=eval(variable,{},variables)
-    if line.endswith(";"):
-        if line.startswith("thojpav("):
-            content = line[8:-2]
-            values = content.split(",")
-            for value in values:
-                value = value.strip()
-                if len(values) > 1:
-                    print(variable, end=" ")
-                else:
-                    print(variable)"""
+print(parser(tokens))
