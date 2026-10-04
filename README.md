@@ -225,14 +225,13 @@ The current implementation is a basic lexer and parser and has several limitatio
 ```text
 Bisale/
 │
-├── interpreter.py
+├── Atil.py
 ├── example.bisale
 └── README.md
 ```
+### `Atil.py`
 
-### `interpreter.py`
-
-Contains the Python implementation of the Bisale interpreter, including the lexer and parser.
+Contains the Python implementation of the **Atil interpreter**, including the lexer and parser.
 
 ### `example.bisale`
 
