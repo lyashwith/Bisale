@@ -224,6 +224,8 @@ The current implementation is written in **Python** and is being developed incre
 
 Developed by **Yashwith L**
 
+<a href="https://github.com/lyashwith"> <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50"> </a>
+
 ---
 
 ## Support
