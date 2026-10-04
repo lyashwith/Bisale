@@ -161,6 +161,20 @@ produces:
 * [x] Recognition of `thojpav` by the lexer
 * [ ] Variable output/execution with `thojpav()`
 
+## Future Output Features
+
+The current `thojpav()` implementation is intended to be the beginning of Bisale's output functionality.
+
+Future versions may introduce additional output-related syntax and capabilities. These may include:
+
+* Outputting multiple variables.
+* Outputting integer values directly.
+* Outputting text or other supported data types as the language expands.
+* More flexible output statements.
+* Additional output-related syntax as the language develops.
+
+These are **future possibilities**, not currently implemented features.
+
 ## Limitations
 
 The current implementation is a basic lexer and parser and has several limitations:
@@ -209,10 +223,6 @@ The current implementation is written in **Python** and is being developed incre
 ## Author
 
 Developed by **Yashwith L**
-
-<a href="https://github.com/lyashwith">
-  <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50">
-</a>
 
 ---
 
