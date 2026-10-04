@@ -1,6 +1,6 @@
 while True:
     try:
-        filename = input("Enter Bisale name to cook: ")
+        filename = input("Enter Bisale name to cook:")
         with open(f"{filename}.bisale", "r") as file:
             code = file.read()
             break
@@ -10,16 +10,39 @@ lines = code.splitlines()
 variables={}
 
 def lexer(code):
+    tokens=[]
     code_word=""
     for character in code:
-        if code_word=="\n":
+        if character=="\n":
             code_word=""
+        elif character == "(":
+            if code_word=="int":
+                tokens.append(("INT",code_word))
+            tokens.append(("LEFT_PARENT",character))
+            code_word = ""
+        elif character=="=":
+            if code_word!="":
+                tokens.append(("IDENTIFIER",code_word))
+            tokens.append(("EQUAL",character))
+            code_word=""
+        elif character == ",":
+            if code_word != "":
+                tokens.append(("IDENTIFIER", code_word))
+            tokens.append(("COMMA", character))
+            code_word = ""
+        elif character == ")":
+            if code_word.isdigit():
+                tokens.append(("INTEGER",code_word))
+            elif code_word != "":
+                tokens.append(("IDENTIFIER",code_word))
+            tokens.append(("RIGHT_PARENT",character))
+            code_word = ""
         else:
             code_word=code_word+character
-        print(code_word)
+    print(tokens)
 lexer(code)
 
-for line in lines:
+"""for line in lines:
     if line.startswith("int(") and line.endswith(")"):
         content = line[4:-1]
         if "=" in line:
@@ -41,4 +64,4 @@ for line in lines:
                 if len(values) > 1:
                     print(variable, end=" ")
                 else:
-                    print(variable)
+                    print(variable)"""
