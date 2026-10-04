@@ -47,7 +47,16 @@ def lexer(code):
             code_word=code_word+character
     
     return tokens
-print(lexer(code))
+
+def parser(tokens):
+    pos=0
+    while pos<len(tokens):
+        if tokens[pos][0] == "INT":
+            print("Declaration")
+        pos+=1
+
+tokens=lexer(code)
+parser(tokens)
 
 """for line in lines:
     if line.startswith("int(") and line.endswith(")"):
