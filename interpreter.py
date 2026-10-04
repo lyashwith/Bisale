@@ -52,7 +52,17 @@ def parser(tokens):
     pos=0
     while pos<len(tokens):
         if tokens[pos][0] == "INT":
-            print("Declaration")
+            if tokens[pos+1][0]=="LEFT_PARENT":
+                if tokens[pos+2][0] == "IDENTIFIER":
+                    pos2=pos+3
+                    while tokens[pos2][0]=="COMMA":
+                        if tokens[pos2+1][0]=="IDENTIFIER":
+                            print("hi")
+                            pos2+=2
+                        else:
+                            break
+                    if tokens[pos2][0] == "RIGHT_PARENT":
+                        print("Valid declaration")
         pos+=1
 
 tokens=lexer(code)
