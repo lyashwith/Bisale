@@ -37,10 +37,13 @@ def lexer(code):
                 tokens.append(("IDENTIFIER",code_word))
             tokens.append(("RIGHT_PARENT",character))
             code_word = ""
+        elif character in " \t":
+            pass
         else:
             code_word=code_word+character
-    print(tokens)
-lexer(code)
+    
+    return tokens
+print(lexer(code))
 
 """for line in lines:
     if line.startswith("int(") and line.endswith(")"):
