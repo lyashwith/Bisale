@@ -338,10 +338,13 @@ Instead of treating a programming language as a black box, Bisale is being built
 
 ## Author
 
-Developed by **Yashwith L**.
+by **Yashwith L**
+
+<a href="https://github.com/lyashwith"> <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50"> </a>
+
 
 ## Repository
 
-[Bisale on GitHub](https://github.com/lyashwith/Bisale)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Bisale_Repository-181717?style=flat\&logo=github\&logoColor=white)](https://github.com/lyashwith/Bisale)
 
 If you find the project interesting, consider giving it a ⭐.
