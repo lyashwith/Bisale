@@ -1,110 +1,174 @@
 # Bisale
 
-**Bisale** is a simple, beginner-friendly programming language and interpreter written in Python.
+Bisale is a simple programming language and interpreter written from scratch in Python.
 
-Bisale is currently in an **early development stage**. The interpreter is being built manually to understand how programming languages work, starting with a custom **lexer** and **parser**.
+The project is being developed as a learning project to understand how programming languages work internally, starting with lexical analysis and parsing.
 
-## Current Syntax
+## Current Status
 
-### Integer Variables
+Bisale is currently an early-stage interpreter.
 
-Use `int()` to declare integer variables:
+The current implementation supports:
+
+* A custom lexer
+* A custom parser
+* Integer variables
+* Multiple variable declarations
+* Assignment during declaration
+* Default integer values
+* `thojpav()` output
+* `.bisale` source files
+
+The interpreter is intentionally being built incrementally rather than using an existing parser or language framework.
+
+---
+
+## Syntax
+
+### Integer Declaration
+
+The `int()` statement is used to declare integer variables.
 
 ```bisale
 int(a)
 ```
 
-A variable without an assigned value starts with `0`.
+This creates the variable `a` with a default value of `0`.
 
-Multiple variables can be declared in one statement:
+### Integer Declaration with Assignment
+
+A value can be assigned while declaring a variable:
+
+```bisale
+int(a=10)
+```
+
+This creates:
+
+```text
+a = 10
+```
+
+### Multiple Variables
+
+Multiple variables can be declared inside the same `int()` statement:
 
 ```bisale
 int(a,b,c)
 ```
 
-Values can also be assigned during declaration:
+This creates:
 
-```bisale
-int(a=1)
-int(b=2)
+```text
+a = 0
+b = 0
+c = 0
 ```
 
-Assigned and unassigned variables can be mixed:
+### Multiple Variables with Values
+
+Variables can have different values in the same declaration:
 
 ```bisale
-int(a=1,b,c=3)
+int(a=1,b=192,c=9)
 ```
 
 This creates:
 
 ```text
 a = 1
-b = 0
-c = 3
+b = 192
+c = 9
 ```
 
-## Example
-
-A current Bisale program:
-
-```bisale
-int(i=1,j=1)
-int(k)
-int(l=2,w)
-```
-
-The parser currently produces:
-
-```text
-{'i': 1, 'j': 1, 'k': 0, 'l': 2, 'w': 0}
-```
-
-## Source Files
-
-Bisale source files use the `.bisale` extension.
+Variables without an assigned value are initialized to `0`.
 
 For example:
 
-```text
-example.bisale
+```bisale
+int(a=1,b=192,l)
 ```
 
-The interpreter asks for the Bisale filename:
+creates:
 
 ```text
-Enter Bisale name to cook:example
+a = 1
+b = 192
+l = 0
 ```
 
-It then reads:
+### Output
 
-```text
-example.bisale
+`thojpav()` is used to output the value of a variable.
+
+```bisale
+int(a=10)
+thojpav(a);
 ```
+
+Multiple variables can be supplied:
+
+```bisale
+int(a=10,b=20)
+thojpav(a,b);
+```
+
+### Complete Example
+
+```bisale
+int(a=10)
+int(b=20,c)
+thojpav(a);
+thojpav(b,c);
+```
+
+---
+
+## Syntax Rules
+
+The current syntax follows these basic rules:
+
+| Syntax           | Purpose                                         |
+| ---------------- | ----------------------------------------------- |
+| `int(a)`         | Declare an integer variable                     |
+| `int(a=10)`      | Declare an integer variable with a value        |
+| `int(a,b,c)`     | Declare multiple integer variables              |
+| `int(a=1,b=2,c)` | Declare multiple variables with optional values |
+| `thojpav(a);`    | Output a variable                               |
+| `thojpav(a,b);`  | Output multiple variables                       |
+| `=`              | Assign a value during declaration               |
+| `,`              | Separate variables                              |
+| `(` `)`          | Enclose declaration/output arguments            |
+| `;`              | End an output statement                         |
+
+---
 
 ## Interpreter Architecture
 
-Bisale currently follows this basic processing pipeline:
+The current processing flow is:
 
 ```text
-.bisale source
-      ↓
-    Lexer
-      ↓
-    Tokens
-      ↓
-    Parser
-      ↓
- Variable dictionary
+Bisale source code
+        ↓
+      Lexer
+        ↓
+      Tokens
+        ↓
+      Parser
+        ↓
+Variable dictionary
+        ↓
+    Execution
 ```
 
 ### Lexer
 
-The lexer reads the source code **character by character** and converts the source into tokens.
+The lexer processes the source code character by character and converts it into tokens.
 
 For example:
 
 ```bisale
-int(a=1)
+int(a=10)
 ```
 
 is converted into tokens similar to:
@@ -118,33 +182,31 @@ INTEGER
 RIGHT_PARENT
 ```
 
-### Token Types
+### Current Token Types
 
-The lexer currently recognizes the following token types:
-
-| Token          | Meaning                    |
-| -------------- | -------------------------- |
-| `INT`          | `int` variable declaration |
-| `OUTPUT`       | `thojpav` output keyword   |
-| `LEFT_PARENT`  | `(`                        |
-| `RIGHT_PARENT` | `)`                        |
-| `EQUAL`        | `=`                        |
-| `COMMA`        | `,`                        |
-| `SEMICOLON`    | `;`                        |
-| `IDENTIFIER`   | Variable name              |
-| `INTEGER`      | Integer value              |
+| Token          | Purpose                      |
+| -------------- | ---------------------------- |
+| `INT`          | Integer variable declaration |
+| `OUTPUT`       | `thojpav` output statement   |
+| `LEFT_PARENT`  | `(`                          |
+| `RIGHT_PARENT` | `)`                          |
+| `EQUAL`        | `=`                          |
+| `COMMA`        | `,`                          |
+| `SEMICOLON`    | `;`                          |
+| `IDENTIFIER`   | Variable name                |
+| `INTEGER`      | Integer value                |
 
 ### Parser
 
-The parser reads the tokens produced by the lexer and processes variable declarations.
+The parser consumes the tokens generated by the lexer and interprets the supported Bisale syntax.
 
-For example:
+For a declaration such as:
 
 ```bisale
 int(a=10,b,c=5)
 ```
 
-produces a Python dictionary:
+the parser creates a variable store similar to:
 
 ```python
 {
@@ -154,71 +216,46 @@ produces a Python dictionary:
 }
 ```
 
-The dictionary is currently used to store the declared variables and their values.
+---
 
 ## Current Features
 
-* [x] `.bisale` source files
-* [x] Character-by-character lexical analysis
-* [x] Token generation
-* [x] Integer variable declaration
-* [x] Multiple variable declarations
-* [x] Integer value assignment during declaration
-* [x] Default value `0`
-* [x] Mixed assigned and unassigned variables
-* [x] `thojpav` recognition by the lexer
-* [ ] `thojpav()` output execution
+* `.bisale` source files
+* Character-by-character lexical analysis
+* Custom token generation
+* Integer variable declarations
+* Multiple variable declarations
+* Assignment during declaration
+* Default value of `0`
+* Mixed assigned and unassigned variables
+* `thojpav` keyword recognition
+* `thojpav()` output execution
+* Multiple variables in `thojpav()`
 
-## Output
-
-Bisale uses **`thojpav()`** as its output keyword.
-
-The lexer currently recognizes `thojpav` and generates an `OUTPUT` token.
-
-Example syntax:
-
-```bisale
-thojpav(a);
-```
-
-However, **output execution is not yet implemented in the parser**.
-
-The output system will be developed separately as the interpreter grows.
-
-## Future Development
-
-As Bisale develops, additional language functionality may be added.
-
-Possible future areas include:
-
-* Completing `thojpav()` output execution.
-* Supporting multiple variables in output statements.
-* Supporting direct values in output statements.
-* Adding additional data types.
-* Adding arithmetic operations.
-* Adding input functionality.
-* Improving syntax validation.
-* Adding better Bisale-specific error messages.
-* Expanding the lexer and parser.
-
-These are areas for future development and are **not currently implemented**.
+---
 
 ## Limitations
 
-The current implementation is a basic lexer and parser and has several limitations:
+Bisale is still a small interpreter, so many language features are not implemented yet.
 
-* Only integer variables are currently supported.
-* Negative integers such as `-1` are not currently recognized as `INTEGER` tokens.
+Currently:
+
+* Only integer variables are supported.
+* Negative integers are not supported.
 * Decimal numbers are not supported.
 * Input statements are not supported.
-* Arithmetic operations such as `+`, `-`, `*`, and `/` are not supported.
-* `thojpav()` is recognized by the lexer, but its execution is not yet implemented.
-* Invalid or incomplete syntax can cause Python `IndexError` exceptions because the parser currently assumes that some token positions exist.
-* Invalid integer assignments can cause parsing problems.
-* Unsupported statements may be ignored instead of producing Bisale-specific errors.
-* Variable redeclaration currently overwrites the previous value in the Python dictionary.
-* Whitespace is currently ignored by the lexer, so some malformed input may result in unexpected identifiers.
-* The entire `.bisale` source file is currently read into memory before lexical analysis.
+* Arithmetic expressions are not supported.
+* Variables cannot currently be reassigned after declaration.
+* Functions are not implemented.
+* Control flow is not implemented.
+* There is no type system yet.
+* There is no AST yet.
+* Error reporting is still basic.
+* Invalid token sequences can cause Python exceptions.
+* Some malformed syntax may not produce a Bisale-specific error.
+* Variable redeclaration can overwrite an existing value in the variable dictionary.
+
+---
 
 ## Project Structure
 
@@ -229,34 +266,82 @@ Bisale/
 ├── example.bisale
 └── README.md
 ```
+
 ### `Atil.py`
 
-Contains the Python implementation of the **Atil interpreter**, including the lexer and parser.
+Contains the current Bisale interpreter, including:
+
+* Source-file loading
+* Lexer
+* Parser
+* Variable storage
+* Output execution
 
 ### `example.bisale`
 
-Contains an example Bisale source program.
+Contains an example Bisale program.
 
 ### `README.md`
 
-Contains documentation for the Bisale language and interpreter.
-
-## About
-
-Bisale is a personal programming-language project created to explore how programming languages and interpreters work.
-
-The interpreter is being developed **incrementally from scratch in Python**, with the lexer and parser implemented manually as part of the learning process.
-
-## Author
-
-Developed by **Yashwith L**
-
-<a href="https://github.com/lyashwith">
-  <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50">
-</a>
+Project documentation.
 
 ---
 
-## Support
+## Running Bisale
 
-If you find **Bisale** useful or interesting, consider giving the repository a ⭐ on GitHub.
+Make sure Python 3 is installed.
+
+Clone the repository:
+
+```bash
+git clone https://github.com/lyashwith/Bisale.git
+cd Bisale
+```
+
+Run the interpreter:
+
+```bash
+python Atil.py
+```
+
+The interpreter asks for the name of a `.bisale` source file.
+
+For example:
+
+```text
+Enter Bisale name to cook: example
+```
+
+It then reads:
+
+```text
+example.bisale
+```
+
+---
+
+## Why Bisale?
+
+This project is primarily about learning how programming languages and interpreters work internally.
+
+Instead of treating a programming language as a black box, Bisale is being built step by step to understand concepts such as:
+
+* Lexical analysis
+* Tokens
+* Grammar
+* Parsing
+* Variables
+* Execution
+* Interpreter architecture
+
+---
+
+## Author
+
+Developed by **Yashwith L**.
+
+## Repository
+
+[Bisale on GitHub](https://github.com/lyashwith/Bisale)
+
+If you find the project interesting, consider giving it a ⭐.
