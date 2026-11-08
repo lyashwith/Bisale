@@ -11,6 +11,8 @@
 </table>
 </div>
 
+[![GitHub Bisale](https://img.shields.io/badge/GitHub-Repository-181717?style=flat&logo=github&logoColor=white)](https://github.com/lyashwith/Bisale)
+
 Bisale is a small programming language interpreter written in Python. It is an experimental project that I am building to understand how a lexer and parser work.
 
 ## Project Structure
