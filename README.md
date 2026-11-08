@@ -9,7 +9,7 @@
 </td>
 </tr>
 </table>
-</div>
+</div align="center">
 
 Bisale is a small programming language interpreter written in Python. It is an experimental project that I am building to understand how a lexer and parser work.
 
