@@ -1,5 +1,5 @@
 <div align="center">
-<table>
+<table align="center">
 <tr>
 <td align="center" valign="middle">
 <img src="https://raw.githubusercontent.com/lyashwith/Bisale/main/Image/Bisale_icon.png" width="150" />
