@@ -2,7 +2,7 @@
 <table>
 <tr>
 <td align="center" valign="middle">
-<img src="https://raw.githubusercontent.com/lyashwith/Bisale/main/Image/Bisale_icon.png" width="110" />
+<img src="https://raw.githubusercontent.com/lyashwith/Bisale/main/Image/Bisale_icon.png" width="150" />
 </td>
 <td align="center" valign="middle">
 <h1>Bisale</h1>
