@@ -1,9 +1,15 @@
- <table>
+<div align="center">
+<table>
 <tr>
-<td><img src="https://raw.githubusercontent.com/lyashwith/Bisale/main/Image/Bisale_icon.png" width="64" /></td>
-<td align="center"><h1>Bisale</h1></td>
+<td align="center" valign="middle">
+<img src="https://raw.githubusercontent.com/lyashwith/Bisale/main/Image/Bisale_icon.png" width="110" />
+</td>
+<td align="center" valign="middle">
+<h1>Bisale</h1>
+</td>
 </tr>
 </table>
+</div>
 
 Bisale is a small programming language interpreter written in Python. It is an experimental project that I am building to understand how a lexer and parser work.
 
@@ -195,28 +201,70 @@ The parser stores variable values in a Python dictionary and handles output usin
 
 ## Limitations
 
-The current implementation has the following limitations:
+Bisale is still in its early stage. These are the current limitations.
+
+### Language Features
 
 - Only integer variables are supported.
 - No variable reassignment.
-- No arithmetic operators.
-- No user input.
-- No negative or decimal numbers.
+- No arithmetic operations.
+- No negative numbers.
+- No decimal numbers.
 - No strings.
+- No user input.
 - No conditional statements.
 - No loops.
 - No user-defined functions.
-- No Abstract Syntax Tree (AST).
-- No comprehensive syntax or semantic error handling.
-- No proper validation of undeclared variables.
-- The parser does not safely handle every malformed or incomplete statement.
+- No arrays or other data structures in the language.
+- No comments in source code.
+- No expressions or operator precedence.
+- No Boolean data type.
+- No comparison or logical operators.
+- No import or module system.
+- No scope management.
+- No return statements.
+- No built-in functions other than the currently supported language keywords.
+
+### Lexer Limitations
+
+- The lexer uses basic character-by-character processing.
+- It does not implement a complete grammar.
+- It stops processing the source when it encounters the first unsupported syntax line.
+- Identifiers do not have comprehensive name validation.
+- Negative and decimal numbers are not recognized as numeric tokens.
+- Strings and comments are not recognized.
+- There is no detailed error location reporting such as line and column numbers.
+
+### Parser Limitations
+
+- The parser directly processes tokens and performs execution.
+- There is no separate execution or evaluation stage.
+- There is no Abstract Syntax Tree (AST).
+- The parser does not validate every statement completely.
+- Undeclared variable access can raise a Python `KeyError`.
+- Incomplete or malformed statements can cause Python `IndexError`.
+- Invalid declarations and assignments are not handled consistently.
+- Re-declaring a variable overwrites its previous value.
+- Unsupported token sequences may be ignored instead of producing an error.
+- Empty output statements are not supported.
+- Output is limited to existing variables.
+- Multiple output values are printed without a separator.
+- There is no comprehensive syntax or runtime error handling.
+
+### File Handling Limitations
+
+- The file loader expects the filename without the `.bisale` extension.
+- Files are loaded relative to the current working directory.
+- The complete source file is read into memory before processing.
+- There is no support for running multiple files or importing other Bisale files.
 
 ## Author
 
 **Yashwith L**
 
-GitHub: [@lyashwith](https://github.com/lyashwith)
+<a href="https://github.com/lyashwith"> <img src="https://avatars.githubusercontent.com/u/313887780?s=100" alt="GitHub Logo" width="50"> </a>
 
 ## Repository
 
-[github.com/lyashwith/Bisale](https://github.com/lyashwith/Bisale)
+
+[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=flat&logo=github&logoColor=white)](https://github.com/lyashwith/Bisale)
