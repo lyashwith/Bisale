@@ -5,7 +5,7 @@
 <img src="https://raw.githubusercontent.com/lyashwith/Bisale/main/Image/Bisale_icon.png" width="150" />
 </td>
 <td align="center" valign="middle">
-<font size="1000"><b>Bisale</b></font>
+<font size="1"><b>Bisale</b></font>
 </td>
 </tr>
 </table>
