@@ -267,4 +267,4 @@ Bisale is still in its early stage. These are the current limitations.
 ## Repository
 
 
-[![GitHub Repository](https://img.shields.io/badge/GitHub-Repository-181717?style=flat&logo=github&logoColor=white)](https://github.com/lyashwith/Bisale)
+[![GitHub Bisale](https://img.shields.io/badge/GitHub-Repository-181717?style=flat&logo=github&logoColor=white)](https://github.com/lyashwith/Bisale)
