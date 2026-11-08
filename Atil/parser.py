@@ -45,5 +45,9 @@ def parser(tokens):
                         if tokens[pos2][0] == "RIGHT_PARENT":
                             if tokens[pos2+1][0] == "SEMICOLON":
                                 print()
+        elif tokens[pos][0] == "UNKNOWN":
+            print("Error: Unknown syntax:", tokens[pos][1])
+            variables["Error"] = "Unknown"
+            return variables
         pos+=1
     return variables
