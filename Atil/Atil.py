@@ -3,4 +3,5 @@ import lexer
 import parser
 code=code_input.code_input()
 tokens=lexer.lexer(code)
-parser.parser(tokens)
+a=parser.parser(tokens)
+print(a)
