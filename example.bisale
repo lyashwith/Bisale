@@ -1,3 +1,9 @@
 int(i)
 int(a=1,b=192,l)
 int(cd=9)
+thojpav(i);
+thojpav(a);
+thojpav(b);
+thojpav(l);
+thojpav(cd);
+thojpav(i,a,b,l,cd);
